@@ -108,14 +108,14 @@ cd d:/education/linuxfromscratch
 
 **Chapter 04**: [Previous](03-basic-system/) | [**04-kernel-configuration**](04-kernel-configuration/) | [Next](05-bootloader/)  
  [**Kernel Menuconfig**](04-kernel-configuration/02-menuconfig/) - Interactive configuration  
- [**Hardening Options**](04-kernel-configuration/03-hardening/) - Security features  
+ [**Hardening Options**](04-kernel-configuration/03-hardening-options/) - Security features  
  [**Container Support**](04-kernel-configuration/04-container-support/) - Namespaces & cgroups  
  [**Kernel Compilation**](04-kernel-configuration/05-compilation/) - Build and install
 
 **Chapter 05**: [Previous](04-kernel-configuration/) | [**05-bootloader**](05-bootloader/) | [Next](06-system-configuration/)  
  [**Bootloader Basics**](05-bootloader/01-introduction/) - Boot process fundamentals  
  [**GRUB Installation**](05-bootloader/02-grub-installation/) - GRUB setup and configuration  
- [**GRUB Configuration**](05-bootloader/03-grub-configuration/) - Boot menu and parameters  
+ [**GRUB Configuration**](05-bootloader/03-configuration/) - Boot menu and parameters  
  [**Initramfs Creation**](05-bootloader/04-initramfs/) - Initial RAM filesystem
 
 **Chapter 06**: [Previous](05-bootloader/) | [**06-system-configuration**](06-system-configuration/) | [Next](07-package-management/)  
