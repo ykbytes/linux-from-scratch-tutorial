@@ -4,18 +4,48 @@ Purposeful, progressive guide to build a minimal, container-enabled, hardened Li
 
 ## Quick links (Table of contents)
 
-- 01-kernel-acquisition/ - Kernel acquisition and verification
-- 02-toolchain-setup/ - Build a clean cross-compilation toolchain
-- 03-basic-system/ - Build core userland utilities and libraries
-- 04-kernel-configuration/ - Kernel tuning, hardening, container features
-- 05-bootloader/ - GRUB, initramfs and secure boot notes
-- 06-system-configuration/ - Users, networking and services
-- 07-package-management/ - Package tooling and repository
-- 08-security-hardening/ - SELinux/AppArmor, firewall, audit
-- 09-container-support/ - Docker, Podman, Buildah and runtime hardening
-- 10-testing-deployment/ - Tests, ISO creation and release
-- 11-container-operations/ - Container fundamentals, pods, and inter-container communication
-- 12-container-security/ - Container attacks, vulnerabilities, and mitigation strategies
+- **[01-kernel-acquisition/](01-kernel-acquisition/)** - Kernel acquisition and verification
+  - [How Linux Works - Introduction](01-kernel-acquisition/how_linux_works/00-intro.md)
+  - [Kernel Repo Layout](01-kernel-acquisition/how_linux_works/01-repo-layout.md)
+  - [Tracing Syscalls](01-kernel-acquisition/how_linux_works/02-tracing-syscalls.md)
+  - [Subsystems Deep Dive](01-kernel-acquisition/how_linux_works/03-subsystems.md)
+  - [Hands-on Exercises](01-kernel-acquisition/how_linux_works/04-hands-on-exercises.md)
+- **[02-toolchain-setup/](02-toolchain-setup/)** - Build a clean cross-compilation toolchain
+  - [What is a Toolchain](02-toolchain-setup/01-introduction/01-what-is-a-toolchain.md)
+- **[03-basic-system/](03-basic-system/)** - Build core userland utilities and libraries
+  - [What is Basic System](03-basic-system/01-introduction/01-what-is-basic-system.md)
+- **[04-kernel-configuration/](04-kernel-configuration/)** - Kernel tuning, hardening, container features
+  - [Kernel Configuration Introduction](04-kernel-configuration/01-introduction/01-kernel-configuration-intro.md)
+  - [Using Menuconfig](04-kernel-configuration/02-menuconfig/01-using-menuconfig.md)
+  - [Hardening Options](04-kernel-configuration/03-hardening-options/01-hardening-options.md)
+  - [Container Support](04-kernel-configuration/04-container-support/01-container-support.md)
+  - [Kernel Compilation](04-kernel-configuration/05-compilation/01-kernel-compilation.md)
+- **[05-bootloader/](05-bootloader/)** - GRUB, initramfs and secure boot notes
+  - [Bootloader Basics](05-bootloader/01-introduction/01-bootloader-basics.md)
+  - [Installing GRUB](05-bootloader/02-grub-installation/01-installing-grub.md)
+  - [GRUB Configuration](05-bootloader/03-configuration/01-grub-config.md)
+  - [Creating Initramfs](05-bootloader/04-initramfs/01-creating-initramfs.md)
+- **[06-system-configuration/](06-system-configuration/)** - Users, networking and services
+  - [Creating Users](06-system-configuration/01-users-groups/01-creating-users.md)
+  - [Network Setup](06-system-configuration/02-networking/01-network-setup.md)
+  - [Systemd Services](06-system-configuration/03-services/01-systemd-services.md)
+  - [Logging Setup](06-system-configuration/04-logging/01-logging-setup.md)
+- **[07-package-management/](07-package-management/)** - Package tooling and repository
+  - [Package Management Introduction](07-package-management/01-introduction/01-package-management-intro.md)
+- **[08-security-hardening/](08-security-hardening/)** - SELinux/AppArmor, firewall, audit
+  - [SELinux Setup](08-security-hardening/01-selinux/01-selinux-setup.md)
+  - [AppArmor Setup](08-security-hardening/02-apparmor/01-apparmor-setup.md)
+  - [Firewall Setup](08-security-hardening/03-firewall/01-firewall-setup.md)
+  - [Audit Setup](08-security-hardening/04-audit/01-audit-setup.md)
+- **[09-container-support/](09-container-support/)** - Docker, Podman, Buildah and runtime hardening
+- **[10-testing-deployment/](10-testing-deployment/)** - Tests, ISO creation and release
+- **[11-container-operations/](11-container-operations/)** - Container fundamentals, pods, and inter-container communication
+  - [Container Operations Fundamentals](11-container-operations/01-fundamentals/01-container-operations.md)
+  - [Pod Operations](11-container-operations/02-pods/)
+  - [Inter-Container Communication](11-container-operations/03-communication/)
+  - [Orchestration](11-container-operations/04-orchestration/)
+- **[12-container-security/](12-container-security/)** - Container attacks, vulnerabilities, and mitigation strategies
+  - [Threat Modeling](12-container-security/01-threat-modeling/01-container-security.md)
 
 ## Learning objectives (root)
 

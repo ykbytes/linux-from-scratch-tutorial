@@ -210,7 +210,7 @@ et/ipv4/tcp.c for connection states.
 
 ## Mermaid Diagram: Directory Relationships
 
-`mermaid
+```mermaid
 graph TD
 A[arch/] --> B[kernel/]
 A --> C[mm/]
@@ -231,7 +231,7 @@ G --> J[Documentation/]
     style D fill:#ffb
     style E fill:#fbb
 
-`
+```
 
 This graph shows dependencies: rch/ initializes hardware, kernel/ provides core services, and others build on top.
 

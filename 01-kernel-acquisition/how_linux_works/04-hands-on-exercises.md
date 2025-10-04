@@ -145,7 +145,7 @@ grep -n '\_\_kmalloc' mm/slab.c
 
 ## Mermaid Diagram: Exercise Flow
 
-`mermaid
+```mermaid
 flowchart TD
 A[Start Exercise] --> B[Grep for Definitions]
 B --> C[Read Code & Comments]
@@ -160,7 +160,7 @@ F --> G[Next Exercise]
     style D fill:#fbb
     style E fill:#f9f
 
-`
+```
 
 This shows the iterative process of kernel exploration.
 
