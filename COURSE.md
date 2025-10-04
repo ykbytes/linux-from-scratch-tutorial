@@ -14,6 +14,9 @@ A guided, hands-on journey from kernel acquisition to release.
 8. Security Hardening
 9. Container Support
 10. Testing & Deployment
+11. Container Operations
+12. Container Security
+13. OS Distribution Comparison
 
 ## Suggested Pace
 

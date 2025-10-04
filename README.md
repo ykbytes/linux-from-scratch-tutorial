@@ -46,6 +46,8 @@ Purposeful, progressive guide to build a minimal, container-enabled, hardened Li
   - [Orchestration](11-container-operations/04-orchestration/)
 - **[12-container-security/](12-container-security/)** - Container attacks, vulnerabilities, and mitigation strategies
   - [Threat Modeling](12-container-security/01-threat-modeling/01-container-security.md)
+- **[13-os-comparison/](13-os-comparison/)** - Comparing our custom LFS distribution with cloud-native operating systems
+  - [Cloud-Native OS Comparison](13-os-comparison/01-cloud-native-comparison/01-os-comparison.md)
 
 ## Learning objectives (root)
 
@@ -103,18 +105,19 @@ cd d:/education/linuxfromscratch
 | [10](10-testing-deployment/)   | Testing & Deployment | ✅ Core     | 2-3h | Intermediate |
 | [11](11-container-operations/) | Container Operations | ✅ Advanced | 3-4h | Advanced     |
 | [12](12-container-security/)   | Container Security   | ✅ Advanced | 4-5h | Expert       |
+| [13](13-os-comparison/)        | OS Comparison        | ✅ Advanced | 2-3h | Intermediate |
 
 ### Progress Overview
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📦 CORE DISTRIBUTION (Chapters 1-10) - 100% Complete
-🔧 ADVANCED FEATURES (Chapters 11-12) - 100% Complete
+🔧 ADVANCED FEATURES (Chapters 11-13) - 100% Complete
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-██████████████████████████████████████████████████ 12/12 Chapters Complete
+██████████████████████████████████████████████████ 13/13 Chapters Complete
 ██████████████████████████████████████████████████ 10/10 Core Chapters Complete
-██████████████████████████████████████████████████ 2/2 Advanced Chapters Complete
+██████████████████████████████████████████████████ 3/3 Advanced Chapters Complete
 ```
 
 ### Detailed Chapter Navigation
@@ -185,11 +188,15 @@ cd d:/education/linuxfromscratch
  [**Inter-Container Communication**](11-container-operations/03-communication/) - Networking patterns  
  [**Orchestration**](11-container-operations/04-orchestration/) - Container orchestration
 
-**Chapter 12**: [Previous](11-container-operations/) | [**12-container-security**](12-container-security/) | N/A  
+**Chapter 12**: [Previous](11-container-operations/) | [**12-container-security**](12-container-security/) | [Next](13-os-comparison/)  
  [**Threat Modeling**](12-container-security/01-threat-modeling/) - Attack surface analysis  
  [**Common Attacks**](12-container-security/02-attacks/) - Vulnerability exploitation  
  [**Mitigation Strategies**](12-container-security/03-mitigation/) - Defense techniques  
  [**Security Testing**](12-container-security/04-testing/) - Security validation
+
+**Chapter 13**: [Previous](12-container-security/) | [**13-os-comparison**](13-os-comparison/) | N/A  
+ [**Cloud-Native OS Comparison**](13-os-comparison/01-cloud-native-comparison/) - Comparing with modern OSes  
+ CoreOS, Flatcar, K3OS, Bottlerocket, Talos, Kairos analysis
 
 ### Navigation Shortcuts
 
@@ -199,19 +206,20 @@ cd d:/education/linuxfromscratch
 - **Phase 2: Core System** Chapters 3-5 (System Build & Boot)
 - **Phase 3: Configuration** Chapters 6-7 (Services & Packages)
 - **Phase 4: Security** Chapters 8-10 (Hardening & Containers)
-- **Phase 5: Advanced** Chapters 11-12 (Operations & Security)
+- **Phase 5: Advanced** Chapters 11-13 (Operations, Security & Comparison)
 
 #### 🎯 Quick Access by Topic
 
 - **Kernel**: [01](01-kernel-acquisition/), [04](04-kernel-configuration/)
 - **Security**: [08](08-security-hardening/), [12](12-container-security/)
 - **Containers**: [09](09-container-support/), [11](11-container-operations/)
+- **Comparison**: [13](13-os-comparison/)
 - **Networking**: [06](06-system-configuration/02-networking/)
 - **Boot Process**: [05](05-bootloader/)
 
 #### 📊 Progress Tracking
 
-- ✅ **Completed**: All 12 chapters with comprehensive content
+- ✅ **Completed**: All 13 chapters with comprehensive content
 - 🔄 **In Progress**: None - tutorial is complete
 - 📋 **Next Steps**: Practice exercises, build your distribution
 

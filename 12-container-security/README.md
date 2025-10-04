@@ -168,6 +168,7 @@ sequenceDiagram
 - Implement continuous security scanning in your CI/CD pipeline
 - Develop custom security policies for your use cases
 - Review the detailed content in [01-threat-modeling/01-container-security.md](01-threat-modeling/01-container-security.md) for comprehensive examples and attack scenarios
+- Proceed to Chapter 13 to compare our custom LFS distribution with modern cloud-native operating systems
 
 ## References
 
