@@ -30,8 +30,13 @@ Purposeful, progressive guide to build a minimal, container-enabled, hardened Li
   - [Network Setup](06-system-configuration/02-networking/01-network-setup.md)
   - [Systemd Services](06-system-configuration/03-services/01-systemd-services.md)
   - [Logging Setup](06-system-configuration/04-logging/01-logging-setup.md)
-- **[07-package-management/](07-package-management/)** - Package tooling and repository
+- **[07-package-management/](07-package-management/)** - Package tooling, repository, and desktop environment
   - [Package Management Introduction](07-package-management/01-introduction/01-package-management-intro.md)
+  - [Installing Pacman](07-package-management/02-pacman-setup/01-installing-pacman.md)
+  - [Building Packages](07-package-management/03-package-building/01-building-packages.md)
+  - [Repository Setup](07-package-management/04-repository-setup/01-repository-setup.md)
+  - [Desktop Dependencies](07-package-management/05-desktop-dependencies/01-desktop-dependencies.md)
+  - [Desktop Environment](07-package-management/06-desktop-environment/01-desktop-environment.md)
 - **[08-security-hardening/](08-security-hardening/)** - SELinux/AppArmor, firewall, audit
   - [SELinux Setup](08-security-hardening/01-selinux/01-selinux-setup.md)
   - [AppArmor Setup](08-security-hardening/02-apparmor/01-apparmor-setup.md)
@@ -99,7 +104,7 @@ cd d:/education/linuxfromscratch
 | [04](04-kernel-configuration/) | Kernel Configuration | ✅ Core     | 3-4h | Advanced     |
 | [05](05-bootloader/)           | Bootloader Setup     | ✅ Core     | 2-3h | Intermediate |
 | [06](06-system-configuration/) | System Configuration | ✅ Core     | 4-5h | Intermediate |
-| [07](07-package-management/)   | Package Management   | ✅ Core     | 3-4h | Intermediate |
+| [07](07-package-management/)   | Package Management   | ✅ Core     | 5-6h | Intermediate |
 | [08](08-security-hardening/)   | Security Hardening   | ✅ Core     | 4-5h | Advanced     |
 | [09](09-container-support/)    | Container Support    | ✅ Core     | 3-4h | Advanced     |
 | [10](10-testing-deployment/)   | Testing & Deployment | ✅ Core     | 2-3h | Intermediate |
@@ -158,7 +163,12 @@ cd d:/education/linuxfromscratch
  [**Logging Setup**](06-system-configuration/04-logging/) - System logging configuration
 
 **Chapter 07**: [Previous](06-system-configuration/) | [**07-package-management**](07-package-management/) | [Next](08-security-hardening/)  
- Package management system setup and repository configuration
+ [**Package Management Introduction**](07-package-management/01-introduction/) - Package management fundamentals  
+ [**Pacman Setup**](07-package-management/02-pacman-setup/) - Install and configure pacman  
+ [**Package Building**](07-package-management/03-package-building/) - Create and build packages  
+ [**Repository Setup**](07-package-management/04-repository-setup/) - Repository configuration  
+ [**Desktop Dependencies**](07-package-management/05-desktop-dependencies/) - X11, graphics drivers, fonts  
+ [**Desktop Environment**](07-package-management/06-desktop-environment/) - XFCE installation and configuration
 
 #### 🔒 Security & Containers
 
