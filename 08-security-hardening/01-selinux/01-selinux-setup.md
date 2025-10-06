@@ -30,6 +30,15 @@ SELinux (Security Enhanced Linux) is a mandatory access control (MAC) system tha
 - **Context**: Security labels on processes and objects
 - **AVC (Access Vector Cache)**: Performance optimization cache
 
+**Kernel Code References**:
+
+- `security/selinux/`: Main SELinux implementation directory
+- `security/selinux/ss/services.c`: Security server - policy decision engine
+- `security/selinux/avc.c`: Access Vector Cache implementation
+- `security/selinux/hooks.c`: LSM (Linux Security Module) hook implementations
+- `security/selinux/selinuxfs.c`: SELinux filesystem (`/sys/fs/selinux/`)
+- Look for `security_*()` LSM hooks that SELinux implements
+
 **Security Context Format:**
 
 ```
@@ -350,6 +359,14 @@ docker run --security-opt label:type:mycontainer_t nginx
 # Disable SELinux for container
 docker run --security-opt label:disable nginx
 ```
+
+**Kernel Code References for Container Labeling**:
+
+- `security/selinux/hooks.c`: Look for `selinux_socket_*()` hooks for network labeling
+- `security/selinux/hooks.c`: `selinux_file_open()` for file context enforcement
+- `security/selinux/netlabel.c`: Network packet labeling for containers
+- `security/selinux/ss/services.c`: `security_transition_sid()` for context transitions
+- Container runtimes use `setexeccon()` syscall to set process context before exec
 
 **Docker SELinux Policy:**
 

@@ -476,6 +476,26 @@ ExecStart=/usr/local/bin/myapp
 EOF
 ```
 
+**Kernel Code References for Systemd Security Features**:
+
+- **NoNewPrivileges**: Uses `prctl(PR_SET_NO_NEW_PRIVS)` syscall
+  - `kernel/sys.c`: `prctl()` implementation
+  - `include/linux/sched.h`: `no_new_privs` flag in task struct
+
+- **PrivateNetwork**: Creates network namespace
+  - `net/core/net_namespace.c`: Network namespace creation
+  - Uses `unshare(CLONE_NEWNET)` syscall
+
+- **ProtectKernelTunables**: Makes `/proc/sys` read-only
+  - `fs/proc/proc_sysctl.c`: Sysctl filesystem implementation
+  - Uses mount namespace with read-only bind mounts
+
+- **PrivateTmp**: Creates private `/tmp` mount
+  - `fs/namespace.c`: Mount namespace and tmpfs setup
+
+- **CGroups**: Resource limits enforced by cgroups
+  - `kernel/cgroup/cgroup.c`: Cgroup resource limits
+
 **Network Isolation:**
 
 ```bash
@@ -515,6 +535,24 @@ ExecStart=/usr/local/bin/myapp
 WantedBy=multi-user.target
 EOF
 ```
+
+**Kernel Code References for Resource Limits**:
+
+- **CPUQuota**: Uses CPU cgroup controller
+  - `kernel/sched/core.c`: CPU bandwidth enforcement
+  - `kernel/cgroup/cgroup.c`: Cgroup attachment and limits
+
+- **MemoryLimit**: Uses memory cgroup controller
+  - `mm/memcontrol.c`: Memory limit enforcement
+  - `mm/oom_kill.c`: OOM killer triggered when limit exceeded
+
+- **TasksMax**: Uses PID cgroup controller
+  - `kernel/cgroup/pids.c`: Process count limiting
+  - Prevents fork bombs and resource exhaustion
+
+- **IOWeight/IODeviceWeight**: Block I/O cgroup
+  - `block/blk-cgroup.c`: I/O bandwidth control
+  - `block/blk-throttle.c`: I/O throttling implementation
 
 ## Monitoring and Troubleshooting
 
