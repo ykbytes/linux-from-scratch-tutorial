@@ -40,6 +40,13 @@ Namespaces provide the fundamental isolation mechanism for containers, allowing 
 
 **Performance Impact**: Minimal
 
+**Kernel Code References**:
+
+- `kernel/pid_namespace.c`: PID namespace implementation
+- `kernel/pid.c`: Process ID allocation and management
+- Look for `create_pid_namespace()` and `alloc_pid()` functions
+- `include/linux/pid_namespace.h`: PID namespace structure definitions
+
 **Configuration**:
 
 ```
@@ -64,6 +71,13 @@ General setup  --->
 
 **Performance Impact**: Low (network stack duplication)
 
+**Kernel Code References**:
+
+- `net/core/net_namespace.c`: Network namespace implementation
+- `include/net/net_namespace.h`: Network namespace structure
+- Look for `copy_net_ns()` and `setup_net()` functions
+- `net/core/dev.c`: Network device namespace handling
+
 **Configuration**:
 
 ```
@@ -86,6 +100,13 @@ General setup  --->
 
 **Performance Impact**: Minimal
 
+**Kernel Code References**:
+
+- `fs/namespace.c`: Mount namespace implementation
+- Look for `copy_mnt_ns()`, `create_mnt_ns()` functions
+- `fs/mount.h`: Mount namespace structures
+- `fs/pnode.c`: Mount propagation implementation
+
 **Configuration**:
 
 ```
@@ -107,6 +128,13 @@ General setup  --->
 **Security Impact**: Enables secure user isolation without privileged access.
 
 **Performance Impact**: Low
+
+**Kernel Code References**:
+
+- `kernel/user_namespace.c`: User namespace implementation
+- `kernel/uid16.c`: UID/GID mapping implementation
+- Look for `create_user_ns()`, `map_id_range_down()` functions
+- `include/linux/user_namespace.h`: User namespace definitions
 
 **Configuration**:
 
@@ -200,6 +228,14 @@ CGroups provide resource limits, accounting, and control for containers.
 
 **Performance Impact**: Low (accounting overhead)
 
+**Kernel Code References**:
+
+- `kernel/cgroup/cgroup.c`: Core cgroup implementation
+- `kernel/cgroup/cgroup-v1.c`: Cgroup v1 implementation
+- `kernel/cgroup/cgroup-v2.c`: Cgroup v2 (unified hierarchy) implementation
+- Look for `cgroup_init()`, `cgroup_attach_task()` functions
+- `include/linux/cgroup.h`: Cgroup core definitions
+
 **Configuration**:
 
 ```
@@ -223,6 +259,13 @@ General setup  --->
 **Security Impact**: Prevents memory exhaustion attacks.
 
 **Performance Impact**: Low (memory tracking)
+
+**Kernel Code References**:
+
+- `mm/memcontrol.c`: Memory cgroup controller implementation
+- Look for `mem_cgroup_charge()`, `mem_cgroup_try_charge()` functions
+- `include/linux/memcontrol.h`: Memory controller definitions
+- `mm/oom_kill.c`: OOM killer integration with memory cgroups
 
 **Configuration**:
 
@@ -248,6 +291,13 @@ Control Group support  --->
 **Security Impact**: Prevents CPU exhaustion and scheduling attacks.
 
 **Performance Impact**: Low
+
+**Kernel Code References**:
+
+- `kernel/sched/core.c`: Scheduler cgroup integration
+- `kernel/sched/fair.c`: CFS (Completely Fair Scheduler) cgroup support
+- Look for `cpu_cgroup_attach()`, `task_group_sched_runtime()` functions
+- `include/linux/sched.h`: Task group scheduling structures
 
 **Configuration**:
 
@@ -365,6 +415,15 @@ Control Group support  --->
 
 **Performance Impact**: Low (metadata operations)
 
+**Kernel Code References**:
+
+- `fs/overlayfs/super.c`: OverlayFS superblock operations
+- `fs/overlayfs/inode.c`: Inode operations for overlayfs
+- `fs/overlayfs/dir.c`: Directory operations
+- `fs/overlayfs/copy_up.c`: Copy-on-write implementation
+- Look for `ovl_fill_super()`, `ovl_copy_up()` functions
+- `Documentation/filesystems/overlayfs.rst`: Comprehensive documentation
+
 **Configuration**:
 
 ```
@@ -438,6 +497,14 @@ File systems  --->
 
 **Performance Impact**: Low
 
+**Kernel Code References**:
+
+- `net/bridge/br.c`: Bridge module initialization
+- `net/bridge/br_device.c`: Bridge device operations
+- `net/bridge/br_forward.c`: Packet forwarding logic
+- `net/bridge/br_if.c`: Bridge interface management
+- Look for `br_dev_setup()`, `br_forward()` functions
+
 **Configuration**:
 
 ```
@@ -462,6 +529,13 @@ Networking support  --->
 **Security Impact**: Enables secure container-to-host communication.
 
 **Performance Impact**: Minimal
+
+**Kernel Code References**:
+
+- `drivers/net/veth.c`: VETH driver implementation
+- Look for `veth_newlink()`, `veth_xmit()` functions
+- `include/linux/if_veth.h`: VETH interface definitions
+- Packets sent to one end appear on the paired end
 
 **Configuration**:
 
