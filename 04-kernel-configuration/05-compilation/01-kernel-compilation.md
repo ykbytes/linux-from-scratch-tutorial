@@ -81,6 +81,36 @@ make -s
 - **Device drivers**: Compiles configured drivers
 - **Linking**: Creates final kernel image
 
+**Kernel Build System - Code References**:
+
+The kernel build is orchestrated by the Kbuild system:
+
+- `Makefile`: Top-level Makefile coordinates the entire build
+- `scripts/Makefile.build`: Core build rules and compiler invocations
+- `scripts/Makefile.lib`: Library compilation rules
+- `scripts/link-vmlinux.sh`: Final kernel linking script
+- `arch/x86/Makefile`: Architecture-specific build rules
+
+**Key Build Stages**:
+
+1. **Configuration Processing**:
+   - `scripts/kconfig/confdata.c`: Reads `.config` file
+   - Generates `include/generated/autoconf.h` with config macros
+
+2. **Dependency Generation**:
+   - `scripts/basic/fixdep.c`: Generates header dependencies
+   - Creates `.d` files tracking file dependencies
+
+3. **Compilation**:
+   - Each `.c` file compiled to `.o` object file
+   - Compiler flags from Kconfig applied (`-D CONFIG_*`)
+
+4. **Linking**:
+   - `scripts/link-vmlinux.sh`: Links all `.o` files
+   - Creates `vmlinux` (uncompressed kernel)
+   - Architecture-specific compression (creates `bzImage` or `vmlinuz`)
+   - `arch/x86/boot/compressed/`: x86 kernel decompression code
+
 ### Stage 2: Modules Build
 
 Loadable kernel modules are compiled separately for better organization.
@@ -105,6 +135,29 @@ make modules_prepare
 - **Filesystem modules**: Btrfs, OverlayFS, network filesystems
 - **Security modules**: SELinux, AppArmor
 - **Container features**: Namespace, cgroups support
+
+**Kernel Module System - Code References**:
+
+- `kernel/module.c`: Core module loading/unloading
+  - `load_module()`: Loads module into kernel
+  - `sys_init_module()`: Module initialization syscall
+  - `sys_delete_module()`: Module removal syscall
+
+- `scripts/Makefile.modpost`: Module post-processing
+  - Generates module metadata
+  - Creates `.mod.c` files with module information
+  - Produces `.ko` (kernel object) files
+
+- **Module Format**:
+  - ELF object files with special sections
+  - `.modinfo` section: Module metadata
+  - `.gnu.linkonce.this_module` section: Module structure
+  - Look for `module_init()` and `module_exit()` macros
+
+- **Module Dependencies**:
+  - `scripts/mod/modpost.c`: Analyzes symbol dependencies
+  - Generates `modules.dep` file
+  - `depmod` utility processes dependencies
 
 ### Stage 3: Installation
 
