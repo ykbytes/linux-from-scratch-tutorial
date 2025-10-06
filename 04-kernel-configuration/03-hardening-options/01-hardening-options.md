@@ -37,6 +37,13 @@ Hardening options can be categorized into:
 
 **Container Impact**: Essential for container security as it protects both host and container processes.
 
+**Kernel Code References**:
+
+- `arch/x86/boot/compressed/kaslr.c`: KASLR implementation for x86_64
+- `arch/x86/kernel/setup.c`: Kernel randomization setup
+- `arch/x86/mm/kaslr.c`: Memory region randomization
+- Look for `kernel_randomize_memory()` function for memory layout randomization
+
 **Configuration**:
 
 ```
@@ -61,6 +68,13 @@ Processor type and features  --->
 **Performance Impact**: Very low (1-2% overhead)
 
 **Container Impact**: Protects container applications from stack-based exploits.
+
+**Kernel Code References**:
+
+- `include/linux/stackprotector.h`: Stack protector definitions
+- `arch/x86/include/asm/stackprotector.h`: x86-specific implementation
+- `kernel/panic.c`: Look for `__stack_chk_fail()` panic handler
+- Compiler generates canary checks automatically when enabled
 
 **Configuration**:
 
@@ -112,6 +126,13 @@ General setup  --->
 **Performance Impact**: None (hardware-enforced)
 
 **Container Impact**: Protects kernel from container-based attacks.
+
+**Kernel Code References**:
+
+- `arch/x86/mm/init.c`: Look for `mark_rodata_ro()` function
+- `include/linux/set_memory.h`: Memory permission setting functions
+- `arch/x86/mm/pageattr.c`: Page attribute manipulation
+- `kernel/module.c`: Module memory protection setup
 
 **Configuration**:
 
@@ -191,6 +212,14 @@ Security options  --->
 **Performance Impact**: Low (filter evaluation overhead)
 
 **Container Impact**: Core technology for container security (used by Docker/Podman).
+
+**Kernel Code References**:
+
+- `kernel/seccomp.c`: Main seccomp implementation
+- `include/linux/seccomp.h`: Seccomp API definitions
+- `kernel/bpf/`: BPF filter implementation
+- Look for `seccomp_set_mode_filter()` and `__seccomp_filter()` functions
+- `arch/x86/kernel/ptrace.c`: Architecture-specific syscall interception
 
 **Configuration**:
 
@@ -327,6 +356,15 @@ Kernel hacking  --->
 
 **Container Impact**: Essential for secure multi-tenant container deployments.
 
+**Kernel Code References**:
+
+- `security/selinux/`: Main SELinux implementation directory
+- `security/selinux/hooks.c`: LSM hooks implementation
+- `security/selinux/ss/services.c`: Security server implementation
+- `security/selinux/avc.c`: Access Vector Cache for performance
+- `security/selinux/selinuxfs.c`: SELinux filesystem interface
+- Look for `selinux_*()` hook functions that implement MAC checks
+
 **Configuration**:
 
 ```
@@ -356,6 +394,15 @@ Security options  --->
 **Performance Impact**: Low (2-5% overhead)
 
 **Container Impact**: Good alternative to SELinux for container security.
+
+**Kernel Code References**:
+
+- `security/apparmor/`: Main AppArmor implementation directory
+- `security/apparmor/lsm.c`: LSM hooks for AppArmor
+- `security/apparmor/policy.c`: Policy management
+- `security/apparmor/domain.c`: Domain transitions
+- `security/apparmor/apparmorfs.c`: AppArmor filesystem interface
+- Look for `apparmor_*()` hook functions and profile enforcement
 
 **Configuration**:
 

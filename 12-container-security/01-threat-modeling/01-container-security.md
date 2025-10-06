@@ -73,6 +73,35 @@ Exploiting kernel vulnerabilities to break out of container isolation.
 whoami  # Shows root on host system
 ```
 
+**Kernel Code Vulnerability Context**:
+
+Common kernel subsystems targeted for container escape:
+
+- **Memory Management** (`mm/`):
+  - `mm/memory.c`: Copy-on-write vulnerabilities (Dirty COW)
+  - `mm/mmap.c`: Memory mapping exploits
+  - `mm/memcontrol.c`: Memory cgroup bypass attempts
+
+- **Namespace Implementation**:
+  - `kernel/nsproxy.c`: Namespace proxy exploits
+  - `kernel/user_namespace.c`: User namespace escapes
+  - Look for vulnerabilities in `create_new_namespaces()`
+
+- **CGroup Vulnerabilities**:
+  - `kernel/cgroup/cgroup.c`: Cgroup escape vulnerabilities
+  - Exploits in `cgroup_attach_task()` can break isolation
+
+- **File System Escapes**:
+  - `fs/overlayfs/`: OverlayFS vulnerabilities for layer bypass
+  - `fs/namespace.c`: Mount namespace escapes
+
+**Protection Mechanisms**:
+
+- Keep kernel updated (patches in `security/`)
+- Enable `CONFIG_SECURITY_LOCKDOWN_LSM`
+- Use seccomp filters to block vulnerable syscalls
+- Apply LSM (SELinux/AppArmor) policies
+
 **Detection:**
 
 ```bash

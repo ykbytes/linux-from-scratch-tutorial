@@ -17,10 +17,37 @@ Network configuration is critical for a container-ready Linux distribution, enab
 - **Firewall**: Network traffic filtering
 - **Network Namespaces**: Container network isolation
 
+**Kernel Network Stack - Code References**:
+
+- `net/core/dev.c`: Network device management
+  - `netdev_register()`: Register network devices
+  - `netif_receive_skb()`: Packet reception
+  - `dev_queue_xmit()`: Packet transmission
+
+- `net/ipv4/ip_input.c`: IPv4 packet processing
+  - `ip_rcv()`: IPv4 packet reception
+  - `ip_forward()`: Packet forwarding
+
+- `net/ipv4/route.c`: IPv4 routing
+  - `ip_route_input()`: Routing decision for incoming packets
+  - `fib_lookup()`: Routing table lookup
+
+- `net/core/rtnetlink.c`: Network configuration via netlink
+  - Used by `ip` command for interface configuration
+
+- `net/core/net_namespace.c`: Network namespace implementation
+  - `copy_net_ns()`: Create network namespace for containers
+
 **Container Networking:**
 
 - **Bridge Networks**: Docker-style bridged networking
+  - `net/bridge/`: Linux bridge implementation
+  - `net/bridge/br_forward.c`: Bridge packet forwarding
+
 - **Overlay Networks**: Multi-host container networking
+  - `net/openvswitch/`: Open vSwitch for overlay networks
+  - `drivers/net/vxlan.c`: VXLAN tunneling
+
 - **Host Networks**: Direct host network access
 - **None Networks**: Isolated networking
 

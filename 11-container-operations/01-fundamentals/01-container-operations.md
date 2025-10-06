@@ -46,6 +46,44 @@ Image → Container → Running Process → Stopped Container → Removed
 - **IPC**: Inter-process communication isolation
 - **USER**: User/group ID isolation
 
+**Kernel Implementation - Code References**:
+
+Each namespace type has its own implementation in the kernel:
+
+- **PID Namespace**:
+  - `kernel/pid_namespace.c`: PID namespace creation and management
+  - `kernel/pid.c`: Process ID allocation in namespaces
+  - Look for `create_pid_namespace()`, `find_pid_ns()`
+
+- **Network Namespace**:
+  - `net/core/net_namespace.c`: Network namespace infrastructure
+  - `net/core/dev.c`: Per-namespace device management
+  - Look for `copy_net_ns()`, `get_net_ns_by_fd()`
+
+- **Mount Namespace**:
+  - `fs/namespace.c`: Mount namespace and propagation
+  - `fs/mount.h`: Mount structures
+  - Look for `copy_mnt_ns()`, `propagate_mount_busy()`
+
+- **UTS Namespace**:
+  - `kernel/utsname.c`: Hostname/domain isolation
+  - Look for `copy_utsname()`
+
+- **IPC Namespace**:
+  - `ipc/namespace.c`: IPC object isolation
+  - Look for `copy_ipcs()`
+
+- **User Namespace**:
+  - `kernel/user_namespace.c`: UID/GID mapping
+  - `kernel/uid16.c`: User ID mapping functions
+  - Look for `create_user_ns()`, `map_id_range_down()`
+
+**Namespace System Calls**:
+
+- `unshare()`: Create new namespace (`kernel/fork.c`)
+- `setns()`: Join existing namespace (`kernel/nsproxy.c`)
+- `clone()`: Create process with new namespaces (`kernel/fork.c`)
+
 **Namespace Example:**
 
 ```bash
@@ -75,6 +113,33 @@ cgroup/
     ├── container1/
     └── container2/
 ```
+
+**Kernel CGroup Implementation - Code References**:
+
+- **Core CGroup System**:
+  - `kernel/cgroup/cgroup.c`: Main cgroup implementation
+  - `kernel/cgroup/cgroup-v1.c`: CGroup v1 (legacy hierarchy)
+  - `kernel/cgroup/cgroup-v2.c`: CGroup v2 (unified hierarchy)
+  - Look for `cgroup_init()`, `cgroup_attach_task()`
+
+- **CGroup Controllers**:
+  - **CPU Controller**: `kernel/sched/core.c`, `kernel/sched/fair.c`
+    - Functions: `cpu_cgroup_attach()`, `task_group_sched_runtime()`
+  
+  - **Memory Controller**: `mm/memcontrol.c`
+    - Functions: `mem_cgroup_charge()`, `mem_cgroup_try_charge()`
+    - OOM handling: `mm/oom_kill.c`
+  
+  - **Block I/O Controller**: `block/blk-cgroup.c`
+    - Functions: `blkcg_init_queue()`, `blk_throtl_bio()`
+  
+  - **PID Controller**: `kernel/cgroup/pids.c`
+    - Limits number of processes: `pids_can_fork()`
+
+- **CGroup Filesystem**:
+  - `kernel/cgroup/cgroup.c`: CGroupFS implementation
+  - Mounted at `/sys/fs/cgroup/`
+  - Virtual files for resource control
 
 **Resource Limits:**
 
